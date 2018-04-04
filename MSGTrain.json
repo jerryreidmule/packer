@@ -3,7 +3,7 @@
     {
       "type": "vmware-iso",
       "boot_command": [
-        "<tab> text ks=$WEBSERVER/$KICKSTART.cfg<enter><wait>"
+        "<tab> text ks=http://icvlab6104.ic.intel.com/software/training.cfg<enter><wait>"
       ],
       "boot_wait": "10s",
       "disk_size": 120000,
@@ -18,10 +18,10 @@
       "iso_checksum_type": "sha256",
       "iso_checksum": "bba314624956961a2ea31dd460cd860a77911c1e0a56e4820a12b9c5dad363f5",
       "ssh_username": "root",
-      "ssh_password": "$PASSWORD",
+      "ssh_password": "anyPo1nt5282!",
       "ssh_port": 22,
       "ssh_wait_timeout": "10000s",
-      "shutdown_command": "echo 'packer' | sudo -S shutdown -P now",
+      "shutdown_command": "/sbin/halt -p",
       "vmx_data": {
            "memsize": "8096",  
            "numvcpus": "2",
@@ -35,11 +35,11 @@
 "post-processors": [
      {
       "type": "shell-local",
-      "inline": [ "/Applications/ovftool/ovftool  /Users/jerry/Packer/output-vmware-packer/packer-vmware-packer.vmx  /Users/jerry/Packer/output-vmware-packer/packer-vmware-packer.ova" ]
+      "inline": [ "/Applications/ovftool/ovftool  /Users/jerry/output-vmware-packer/packer-vmware-packer.vmx  /Users/jerry/ova/MSGTrain.ova" ]
      },
      {
          "files": [
-           "Packer.ova"
+           "MSGTrain.ova"
          ],
          "type": "artifice"
      }
